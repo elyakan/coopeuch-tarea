@@ -1,5 +1,12 @@
 Frontend modificado desde el siguiente repositorio
-
+cmd luego de bajar el sitio:
+npm install
+npm install axios
+npm install redux react-redux redux-thunk
+npm install --save-dev redux-devtools-extension
+npm install -D vitest happy-dom @testing-library/react
+npm install -D @testing-library/jest-dom
+npm install --dev typescript
 
 # React Redux CRUD App example with Axios and Rest API
 
