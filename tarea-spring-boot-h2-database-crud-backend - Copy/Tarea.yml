@@ -1,0 +1,158 @@
+openapi: 3.0.0
+info:
+  description: >-
+    Provides GET, DELETE, PATCH, POST to tables in server XXX
+    usr_bd.tarea
+  version: 1.0.0
+  title: coopeuch_test
+paths:
+  /tareas:
+    get:
+      tags:
+        - /tareas
+      summary: list all tarea
+      description: list all tarea
+      operationId: getTarea
+      responses:
+        '200':
+          description: Return all
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tarea'
+    post:
+      tags:
+        - /tareas
+      summary: create tarea
+      description: create tarea
+      operationId: createTarea
+      requestBody:
+        description: tarea object that needs to be added to the store
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tarea"
+      responses:
+        '200':
+          description: Signature method successfully create
+    delete:
+      tags:
+        - /tareas
+      summary: eliminates all tarea
+      description: eliminates todas tarea
+      operationId: delTarea
+      responses:
+        '200':
+          description: Signature method successfully deleted
+  /tarea/id:
+    put:
+      tags:
+        - /tarea/id
+      summary: update tarea
+      description: update tarea
+      operationId: updateTarea
+      requestBody:
+        description: tarea object that needs to be updated to the store
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Tarea"
+      responses:
+        '200':
+          description: Signature method successfully patches
+    get:
+      tags:
+        - /tarea/id
+      summary: list detail of tarea
+      description: list detail of tarea
+      operationId: getDetTarea
+      parameters:
+        - name: id
+          in: query
+          description: filtering tarea
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: Cache-Control
+          in: header
+          required: false
+          description: >-
+            The header to specify if cache should be bypassed and data should be
+            fetched from source. Cache will be used by default, unless value is
+            set to "no-cache".
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Return all products of all categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tarea'
+    delete:
+      tags:
+        - /tarea/id
+      summary: eliminates tarea
+      description: eliminates tarea
+      operationId: deleteTarea
+      parameters:
+        - name: id
+          in: query
+          description: delete tarea
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Signature method successfully deleted
+  /tarea/descripcion:
+    get:
+      tags:
+        - /tarea/descripcion
+      summary: busca tarea por descripcion
+      description: busca tarea por descripcion
+      operationId: serchTarea
+      parameters:
+        - name: descripcion
+          description: filtering tarea
+          required: true
+      responses:
+        '200':
+          description: Return all products of all categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tarea'
+servers:
+  - url: /api
+components:
+  schemas:
+    Tarea:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: code
+          example: 1
+          description: 'Unique tarea'
+        descripcion:
+          type: string
+          example: descripcion de tarea
+          description: 'some about tarea'
+        fcreacion:
+          type: string
+          example: 12/10/2001 15:30:36
+          description: 'datatime for tarea'
+        vigente:
+          type: boolean
+          example: true
