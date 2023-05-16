@@ -1,7 +1,7 @@
 Frontend modificado desde el siguiente repositorio
 cmd luego de bajar el sitio:
 npm install
-npm install axios
+npm install axios 
 npm install redux react-redux redux-thunk
 npm install --save-dev redux-devtools-extension
 npm install -D vitest happy-dom @testing-library/react
